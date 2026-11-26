@@ -16,14 +16,18 @@ client = genai.Client(api_key=API_KEY)
 MODELO = "gemini-3.8-flash"
 
 # Localização da base de conhecimento
-PASTA_PROJETO = Path(__file__).resolve().parent.parent
+PASTA_PROJETO = Path(__file__).resolve()
+
+while not (PASTA_PROJETO / "README.md").exists():
+    PASTA_PROJETO = PASTA_PROJETO.parent
+
 PASTA_DATA = PASTA_PROJETO / "data"
 
 # Carregamento dos arquivos de conhecimento
 def carregar_base():
     conhecimento = ""
 
-    for arquivo in PASTA_DATA.glob("*.md"):
+    for arquivo in PASTA_DATA.glob("**/*.md"):
         conteudo = arquivo.read_text(encoding="utf-8")
         conhecimento += f"\n\n{conteudo}"
 
