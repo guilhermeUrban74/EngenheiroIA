@@ -13,7 +13,7 @@ if not API_KEY:
 
 client = genai.Client(api_key=API_KEY)
 
-MODELO = "gemini-2.5-flash"
+MODELO = "gemini-3.8-flash"
 
 # Localização da base de conhecimento
 PASTA_PROJETO = Path(__file__).resolve().parent.parent
